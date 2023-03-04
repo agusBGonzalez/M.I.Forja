@@ -13,7 +13,7 @@ const NosotrosPage = (props) => {
           <div className="persona">
             <img src={imagen} width="250px" alt="Imagen de M.I Forja"></img>
             <h2>Nombre y apellido</h2>
-            <div> informacionn</div>
+            <div> informacion</div>
           </div>
         </div>
       </div>

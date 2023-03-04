@@ -1,7 +1,9 @@
 import React from 'react';
 const ContactoPage = (props) => {
     return(
-        <div>ContactoPage</div>
+        <div>ContactoPage
+            sddf
+        </div>
     )
 }
 

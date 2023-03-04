@@ -5,7 +5,8 @@ const HomePage = (props) => {
       <div className="homeimg"></div>
       <div className="columnas">
         <div className="bienvenidos">lorem</div>
-        <div className="testimonios">testimonios</div>
+              <h3 className="testimonios">testimonios</h3>
+              <p>parrafo</p>
       </div>
     </main>
   );

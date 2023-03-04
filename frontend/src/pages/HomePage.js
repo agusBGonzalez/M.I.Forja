@@ -1,8 +1,14 @@
-import React from 'react';
+import React from "react";
 const HomePage = (props) => {
-    return(
-        <div>HomePage</div>
-    )
-}
+  return (
+    <main className="holder">
+      <div className="homeimg"></div>
+      <div className="columnas">
+        <div className="bienvenidos">lorem</div>
+        <div className="testimonios">testimonios</div>
+      </div>
+    </main>
+  );
+};
 
 export default HomePage;

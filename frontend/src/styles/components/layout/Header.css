@@ -1,15 +1,22 @@
-header{
-    background-color: #2e64a1;
-    padding:16ps 0;
+:root {
+  --primary-color: #2d2d2d;
+  --secondary-color: #444444;
+  --light-color: #f5f5f5;
+  --titulos: #7f6f45;
+  --enlace: #d0bb71;
+}
+.holder {
+  background-color: var(--primary-color);
+  padding: 16ps 0;
 }
 
-header h1{
-    color: white;
-    font-size: 40px;
-    font-weight: 100;
-    font-style: italic;
-    display: inline-block;
-    position: relative;
-    bottom: 35px;
-    margin-left: 10px;
+header h1 {
+  color: var(--titulos);
+  font-size: 40px;
+  font-weight: 100;
+  font-style: italic;
+  display: inline-block;
+  position: relative;
+  bottom: 35px;
+  margin-left: 10px;
 }

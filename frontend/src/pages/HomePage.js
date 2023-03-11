@@ -1,22 +1,51 @@
 import React from "react";
 import Section from "../components/widgets/Section";
-import '../styles/components/pages/HomePage.css'
+
 const HomePage = (props) => {
   // definir los elementos para cada sección
-  const forjaItems = ["Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6"];
-  const otraItems = ["Item A", "Item B", "Item C", "Item D", "Item E", "Item F"];
-
+  const elements = [
+    [
+      "https://slideplayer.es/106369/1/images/slide_1.jpg",
+      "Descripción de la imagen 1",
+    ],
+    [
+      "https://slideplayer.es/106369/1/images/slide_1.jpg",
+      "Descripción de la imagen 2",
+    ],
+    [
+      "https://slideplayer.es/106369/1/images/slide_1.jpg",
+      "Descripción de la imagen 3",
+    ],
+    [
+      "https://slideplayer.es/106369/1/images/slide_1.jpg",
+      "Descripción de la imagen 4",
+    ],
+    [
+      "https://slideplayer.es/106369/1/images/slide_1.jpg",
+      "Descripción de la imagen 5",
+    ],
+    [
+      "https://slideplayer.es/106369/1/images/slide_1.jpg",
+      "Descripción de la imagen 6",
+    ],
+  ];
   return (
     <main className="holder">
-      <div className="homeimg"></div>
-      <div className="columnas">
-        <div className="bienvenidos">lorem</div>
-
-        {/* Sección de forja */}
-        <Section numRows={2} numCols={3} />
-
-        {/* Sección de otra cosa */}
-        <Section numRows={2} numCols={3} />
+      <div>
+        {/* Ejemplo de sección de 2 filas y 3 columnas */}
+        <Section
+          name={"Patrones Damasco"}
+          numRows={3}
+          numCols={3}
+          elements={elements}
+        />
+        {/* Ejemplo de sección de 4 filas y 7 columnas */}
+        <Section
+          name={"Hojas de Cuchillos"}
+          numRows={3}
+          numCols={3}
+          elements={elements}
+        />
       </div>
     </main>
   );

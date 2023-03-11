@@ -1,5 +1,6 @@
 import React from 'react';
 import imagen from '../../img/M.I._Forja_logo.png';
+import '../../styles/components/layout/Header.css'
 const Header = (props) => {
     return(
         <div className='holder'>

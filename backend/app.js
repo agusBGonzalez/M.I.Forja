@@ -10,6 +10,10 @@ var usersRouter = require('./routes/users');
 var app = express();
 
 const session = require ('express-session');
+const adminLoginRouter = require('./routes/admin/login');
+const novedadesRouter = require('./routes/admin/novedades')
+
+require('dotenv').config();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -27,24 +31,11 @@ app.use(session({
   saveUninitialized: true
 }));
 
+app.use('/', indexRouter);
+// Rutas
+app.use('/admin/login', adminLoginRouter);
+app.use('/admin/novedades', novedadesRouter);
 
-//app.use('/', indexRouter);
-//app.use('/users', usersRouter);
-
-app.get('/ejemploito', function(req, res){
-  if (req.session.nombre){
-    res.send('Hola ' + req.session.nombre);
-  } else {
-    res.send('Hola usuario desconociddfsfsfo.');
-  }
-});
-app.get('/ejemplo', function(req, res){
-  if (req.session.nombre){
-    res.send('Hola ' + req.session.nombre);
-  } else {
-    res.send('Hola usuario desconocido.');
-  }
-});
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

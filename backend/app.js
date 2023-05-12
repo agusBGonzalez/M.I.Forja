@@ -12,6 +12,7 @@ var app = express();
 const session = require ('express-session');
 const adminLoginRouter = require('./routes/admin/login');
 const novedadesRouter = require('./routes/admin/novedades')
+const itemsRouter = require('./routes/admin/items')
 
 require('dotenv').config();
 
@@ -35,7 +36,7 @@ app.use('/', indexRouter);
 // Rutas
 app.use('/admin/login', adminLoginRouter);
 app.use('/admin/novedades', novedadesRouter);
-
+app.use('/admin/item',itemsRouter );
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));

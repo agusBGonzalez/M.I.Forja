@@ -6,9 +6,7 @@ router.post("/", async (req, res, next) => {
   try {
     console.log(req.body);
     var usuario = req.body.username;
-    console.log('Usuario' + usuario);
     var password = req.body.password;
-    console.log('password' + password);
     var data = await usuariosModel.getUserByUsernameAndPassword(
       usuario,
       password

@@ -1,12 +1,21 @@
-const express = require("express");
+const express = require('express');
+const path = require('path');
 const router = express.Router();
 
-router.get("/seccion1", (req, res) => {
-  res.render("admin/seccion1");
+// Ruta principal del administrador
+router.get('/', (req, res) => {
+  // Renderizar la vista del administrador con una lista de elementos
+  const items = ['patrones', 'hojas']; // Nombres descriptivos de los archivos
+  res.render('admin/index', { items });
 });
 
-router.get("/seccion2", (req, res) => {
-  res.render("admin/seccion2");
+// Ruta para los elementos individuales
+router.get('/item/:itemName', (req, res) => {
+  const itemName = req.params.itemName;
+  // Realizar acciones específicas para cada elemento según el nombre del archivo
+  // ...
+  // Renderizar la vista correspondiente al elemento individual
+  res.render('admin/item', { itemName });
 });
 
 module.exports = router;

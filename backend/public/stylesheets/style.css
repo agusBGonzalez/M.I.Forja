@@ -6,3 +6,34 @@ body {
 a {
   color: #00B7FF;
 }
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.menu-section {
+  width: 25%;
+  background-color: #f0f0f0;
+  padding: 20px;
+}
+
+.content-section {
+  width: 75%;
+  padding: 20px;
+}
+
+.menu {
+  list-style: none;
+  padding: 0;
+}
+
+.menu li {
+  margin-bottom: 10px;
+}
+
+.menu li a {
+  text-decoration: none;
+  color: #000;
+  font-weight: bold;
+}
+

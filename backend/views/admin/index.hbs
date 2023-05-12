@@ -1,21 +1,35 @@
+{{!-- Plantilla principal --}}
 <!DOCTYPE html>
 <html>
 <head>
     <title>Admin Panel</title>
-    <link rel="stylesheet" type="text/css" href="/styles.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
 </head>
 <body>
     <div class="container">
         <div class="menu-section">
             <h2>Menu Administrador</h2>
             <ul class="menu">
-                <li><a href="/admin/seccion1">Sección 1</a></li>
-                <li><a href="/admin/seccion2">Sección 2</a></li>
+                {{#each items}}
+                    <li><a href="/admin/item/{{this}}">{{this}}</a></li>
+                {{/each}}
             </ul>
         </div>
         <div class="content-section">
             {{{body}}}
         </div>
     </div>
+    <script>
+        function loadContent(url) {
+            var xhr = new XMLHttpRequest();
+            xhr.onreadystatechange = function () {
+                if (xhr.readyState === 4 && xhr.status === 200) {
+                    document.getElementById("contentContainer").innerHTML = xhr.responseText;
+                }
+            };
+            xhr.open("GET", url, true);
+            xhr.send();
+        }
+    </script>
 </body>
 </html>

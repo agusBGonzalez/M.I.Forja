@@ -3,7 +3,7 @@ const { queryPool  } = require("./bd.js");
 async function getAll(tableName) {
   const sql = `SELECT * FROM ${tableName}`;
   const results = await queryPool(tableName, sql);
-  return "results";
+  return results;
 }
 
 async function insert(tableName, data) {

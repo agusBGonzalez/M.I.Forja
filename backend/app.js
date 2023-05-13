@@ -13,6 +13,15 @@ const session = require ('express-session');
 const adminLoginRouter = require('./routes/admin/login');
 const novedadesRouter = require('./routes/admin/novedades')
 const itemsRouter = require('./routes/admin/items')
+const handlebars = require('handlebars');
+
+handlebars.registerHelper('isEqual', function(a, b, options) {
+  if (a === b) {
+    return options.fn(this);
+  } else {
+    return options.inverse(this);
+  }
+});
 
 require('dotenv').config();
 

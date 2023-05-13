@@ -1,5 +1,5 @@
-const hojasModel = require("./models/hojas");
-const patronesModel = require("./models/patrones");
+const hojasModel = require("./models/items/hojas");
+const patronesModel = require("./models/items/patrones");
 
 async function testModels() {
   try {
@@ -36,7 +36,10 @@ async function testModels() {
     };
     const insertedPatronId2 = await patronesModel.insertPatron(newPatron2);
     console.log("ID del patrón insertado 2:", insertedPatronId2);
-
+    
+    
+    var getItemsPatron= await patronesModel.getItems(newPatron2);
+    console.log("Despues del  "+getItemsPatron);
     // ... Resto del código para probar las funciones de obtención, actualización y eliminación
   } catch (error) {
     console.log(error);

@@ -49,7 +49,23 @@
 <body>
     <div class="headerItems">
         <h1>{{itemName}}</h1>
-        <a href="/admin/item/{{itemName}}/create" class="add-button">Crear</a>
+        <button id="addButton" class="add-button">Agregar</button>
+    </div>
+    <div id="cargaDatos" style="display: none;">
+        <form id="addItemForm" action="/admin/item/{{itemName}}/insert" method="POST">
+            <input type="text" name="imagen" placeholder="Imagen" value="{{imagen}}">
+            <input type="text" name="descripcion" placeholder="Descripción" value="{{descripcion}}">
+            <input type="text" name="titulo" placeholder="Título" value="{{titulo}}">
+            <button id="botoncito" class="add-button">Agregar</button>
+        </form>
+    </div>
+    <div id="actualizarDatos" style="display: none;">
+        <form id="editItemForm" action="/admin/item/{{itemName}}/update/{{itemId}}" method="POST">
+            <input type="text" name="imagen" placeholder="Imagen" value="{{imagen}}">
+            <input type="text" name="descripcion" placeholder="Descripción" value="{{descripcion}}">
+            <input type="text" name="titulo" placeholder="Título" value="{{titulo}}">
+            <button id="botoncito" class="add-button">Agregar</button>
+        </form>
     </div>
     <table>
         <thead>
@@ -67,9 +83,9 @@
                 <td>{{this}}</td>
                 {{/each}}
                 <td class="actions-cell">
-                    <button class="edit-button">Edit</button>
+                    <button class='editButton' data-imagen="{{imagen}}" data-descripcion="{{descripcion}}" data-titulo="{{titulo}}" type="button">Editar</button>
                     <form action="/admin/item/{{../itemName}}/delete/{{this.id}}" method="POST">
-                        <button type="submit" class="delete-button">Delete</button>
+                        <button type="submit" class="delete-button">Eliminar</button>
                     </form>
                 </td>
             </tr>
@@ -77,5 +93,44 @@
         </tbody>
     </table>
 </body>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var addButton = document.getElementById('addButton');
+        var content = document.getElementById('cargaDatos');
+
+        var editButtons = document.getElementsByClassName('editButton');
+        var contentEdit = document.getElementById('actualizarDatos');
+        var imagenInput = document.querySelector('#actualizarDatos input[name="imagen"]');
+        var descripcionInput = document.querySelector('#actualizarDatos input[name="descripcion"]');
+        var tituloInput = document.querySelector('#actualizarDatos input[name="titulo"]');
+
+        addButton.addEventListener('click', function () {
+            if (content.style.display === 'none') {
+                content.style.display = 'block';
+                addButton.textContent = 'Cancelar';
+            } else {
+                content.style.display = 'none';
+                addButton.textContent = 'Agregar';
+            }
+        });
+
+        for (var i = 0; i < editButtons.length; i++) {
+            editButtons[i].addEventListener('click', function () {
+                var imagen = this.getAttribute('data-imagen');
+                var descripcion = this.getAttribute('data-descripcion');
+                var titulo = this.getAttribute('data-titulo');
+                
+                if (contentEdit.style.display === 'none') {
+                    contentEdit.style.display = 'block';
+                    imagenInput.value = imagen;
+                    descripcionInput.value = descripcion;
+                    tituloInput.value = titulo;
+                } else {
+                    contentEdit.style.display = 'none';
+                }
+            });
+        }
+    });
+</script>
 
 </html>

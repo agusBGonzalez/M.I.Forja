@@ -6,7 +6,6 @@ async function getUserByUsernameAndPassword(user, password) {
     const tableName = "usuarios";
     const query = "SELECT * FROM $TABLE_NAME$ WHERE usuario = ? AND password = ? LIMIT 1";
     const rows = await queryPool(tableName, query, [user, md5(password)]);
-    console.log(rows);
     return rows[0];
   } catch (e) {
     throw e;

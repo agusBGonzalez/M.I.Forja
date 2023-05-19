@@ -4,7 +4,7 @@ const usuariosModel = require("./../../models/usuariosModels");
 
 router.post("/", async (req, res, next) => {
   try {
-    console.log(req.body);
+
     var usuario = req.body.username;
     var password = req.body.password;
     var data = await usuariosModel.getUserByUsernameAndPassword(

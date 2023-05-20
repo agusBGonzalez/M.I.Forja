@@ -33,4 +33,12 @@ router.get("/", function (req, res, next) {
   });
 });
 
+router.get("/loguout", function (req, res, next) {
+  req.session.destroy();
+  res.render("admin/login", {
+    layout: "admin/layout",
+  });
+});
+
+
 module.exports = router;

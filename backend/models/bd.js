@@ -14,7 +14,7 @@ pool.query = util.promisify(pool.query);
 
 function queryPool(tableName, sql, params) {
   const query = sql.replace("$TABLE_NAME$", tableName);
-  
+  console.log('estoy en el queryPool', query);
   return pool.query(query, params);
 }
 

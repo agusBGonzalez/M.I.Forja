@@ -23,7 +23,9 @@ async function getById(tableName, id) {
 }
 
 async function update(tableName, id, data) {
+
   const sql = `UPDATE ${tableName} SET ? WHERE id = ?`;
+  console.log('estoy en el update', sql);
   const result = await queryPool(tableName, sql, [data, id]);
   return result.affectedRows > 0;
 }

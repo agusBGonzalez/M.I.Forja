@@ -86,24 +86,31 @@ router.post('/:itemName/insert', (req, res) => {
 });
 
 // Ruta para actualizar un elemento existente
-router.post('/:itemName/update/:itemId', (req, res) => {
+router.post('/:itemName/update', (req, res) => {
     const itemName = req.params.itemName;
-    const itemId = req.params.itemId;
     const data = req.body;
-
+    const itemId = data['id'];
+console.log(itemId);
     // Verificar si el modelo del elemento existe
     if (itemModels.hasOwnProperty(itemName)) {
         // Importar el modelo del elemento dinámicamente
         const itemModel = itemModels[itemName];
 
-        itemModel.updateItems(itemId, data)
-            .then(() => {
-                res.redirect(`/admin/item/${itemName}`);
-            })
-            .catch((error) => {
-                console.log(error);
-                res.status(500).send(`Error al actualizar el elemento ${itemId} de ${itemName} en la base de datos`);
-            });
+        if (itemId !== "") {
+            // Si se proporciona un ID válido, se trata de una actualización
+            itemModel.updateItems(itemId, data)
+                .then(() => {
+                    res.redirect(`/admin/item/${itemName}`);
+                })
+                .catch((error) => {
+                    console.log(error);
+                    res.status(500).send(`Error al actualizar el elemento ${itemId} de ${itemName} en la base de datos`);
+                });
+        } else {
+            // Si no se proporciona un ID válido, muestra un mensaje de error
+            console.log("ID inválido");
+            res.status(400).send("ID inválido");
+        }
     } else {
         res.status(404).send('Elemento no encontrado');
     }
